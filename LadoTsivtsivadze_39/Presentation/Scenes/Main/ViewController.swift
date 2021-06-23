@@ -17,21 +17,40 @@ class ViewController: UIViewController {
         
         let semaphore = DispatchSemaphore(value: 0)
         
-        queue1.async { 
+//        queue1.async {
+//            //guard let self = self else { return }
+//            print("sleeping in queue1...")
+//            var test = ""
+//            Thread.sleep(forTimeInterval: 3)
+//            queue2.async {
+//                print("sleeping in queue2...")
+//                Thread.sleep(forTimeInterval: 3)
+//                test = "sucess"
+//                print("queue2 done sleeping")
+//                semaphore.signal()
+//            }
+//            print("semaphore wait activated")
+//            semaphore.wait()
+//            print("queue1 done sleeping")
+//            print("test is \(test)")
+//        }
+        
+        queue1.async {
             //guard let self = self else { return }
-            print("sleeping in queue1...")
-            var test = ""
-            Thread.sleep(forTimeInterval: 3)
-            queue2.async {
-                print("sleeping in queue2...")
-                Thread.sleep(forTimeInterval: 3)
-                test = "sucess"
-                print("queue2 done sleeping")
-                semaphore.signal()
+            print("1")
+            print("2")
+            
+            for a in 0..<5 {
+                queue1.async {
+                    print("repeat")
+                }
             }
             semaphore.wait()
-            print("queue1 done sleeping")
-            print("test is \(test)")
+            semaphore.signal()
+        
+            print("3")
+            print("4")
+            print("5")
         }
     }
     
