@@ -16,22 +16,20 @@ struct Object {
 
 protocol NetworkManager: AnyObject {
     func fetchIds(completion: @escaping ([Int]) -> Void)
-    func fetchObject(completion: @escaping (Object) -> Void)
+    func fetchObject(by id: Int, completion: @escaping (Object) -> Void)
 }
 
 extension NetworkManager {
     func fetchObjects(completion: @escaping ([Object]) -> Void) {
         fetchIds { [weak self] (ids) in
             guard let self = self else { return }
-            var testObject: Object = Object(id: 0, name: "", surname: "")
+            var testObject: Object?
             var result: [Object] = []
             ids.forEach {
-                while testObject.id != $0 {
-                    self.fetchObject { (object) in
-                        testObject = object
-                    }
-                }
-                result.append(testObject)
+                self.fetchObject(by: $0, completion: { (object) in
+                    testObject = object
+                })
+                //result.append(testObject)
             }
             completion(result)
         }

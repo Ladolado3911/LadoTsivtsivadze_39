@@ -12,19 +12,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        print("1")
-//        DispatchQueue.main.async {
-//            print("2")
-//        }
-//        print("3")
-//        DispatchQueue.main.async {
-//            print("4")
-//        }
-//        print("5")
-//        DispatchQueue.main.async {
-//            print("6")
-//        }
-//        print("7")
+        let queue1 = DispatchQueue(label: "thread 1", attributes: .concurrent)
+        let queue2 = DispatchQueue(label: "thread2", attributes: .concurrent)
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        queue1.async { 
+            //guard let self = self else { return }
+            print("sleeping in queue1...")
+            var test = ""
+            Thread.sleep(forTimeInterval: 3)
+            queue2.async {
+                print("sleeping in queue2...")
+                Thread.sleep(forTimeInterval: 3)
+                test = "sucess"
+                print("queue2 done sleeping")
+                semaphore.signal()
+            }
+            semaphore.wait()
+            print("queue1 done sleeping")
+            print("test is \(test)")
+        }
     }
     
     @IBAction func onPrint(_ sender: Any) {
