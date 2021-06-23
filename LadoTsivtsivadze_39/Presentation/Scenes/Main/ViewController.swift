@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         let queue1 = DispatchQueue(label: "thread 1", attributes: .concurrent)
         let queue2 = DispatchQueue(label: "thread2", attributes: .concurrent)
         
-        let semaphore = DispatchSemaphore(value: 1)
+        let semaphore = DispatchSemaphore(value: 0)
         
 //        queue1.async {
 //            //guard let self = self else { return }
@@ -40,9 +40,12 @@ class ViewController: UIViewController {
             print("1")
             print("2")
             
+            var result: [Int] = []
+            
             for a in 0..<5 {
                 queue2.async {
                     print("repeat")
+                    result.append(a)
                     semaphore.signal()
                 }
                 if a == 4 {
@@ -54,6 +57,8 @@ class ViewController: UIViewController {
             print("3")
             print("4")
             print("5")
+            
+            print(result)
         }
     }
     
