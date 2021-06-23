@@ -14,6 +14,7 @@
 		3F609E5C26832AB100CC0494 /* LadoTsivtsivadze_39.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F609E5A26832AB100CC0494 /* LadoTsivtsivadze_39.xcdatamodeld */; };
 		3F609E5E26832AB300CC0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F609E5D26832AB300CC0494 /* Assets.xcassets */; };
 		3F609E6126832AB300CC0494 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F609E5F26832AB300CC0494 /* LaunchScreen.storyboard */; };
+		3F609E732683303800CC0494 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F609E722683303800CC0494 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3F609E5D26832AB300CC0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F609E6026832AB300CC0494 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F609E6226832AB300CC0494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F609E722683303800CC0494 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,65 @@
 		3F609E5026832AB100CC0494 /* LadoTsivtsivadze_39 */ = {
 			isa = PBXGroup;
 			children = (
-				3F609E5126832AB100CC0494 /* AppDelegate.swift */,
-				3F609E5326832AB100CC0494 /* SceneDelegate.swift */,
-				3F609E5526832AB100CC0494 /* ViewController.swift */,
-				3F609E5726832AB100CC0494 /* Main.storyboard */,
-				3F609E5D26832AB300CC0494 /* Assets.xcassets */,
+				3F609E712683302100CC0494 /* Managers */,
+				3F609E6B26832EFE00CC0494 /* Presentation */,
+				3F609E6926832EF800CC0494 /* App */,
+				3F609E6F26832F1A00CC0494 /* Resources */,
 				3F609E5F26832AB300CC0494 /* LaunchScreen.storyboard */,
 				3F609E6226832AB300CC0494 /* Info.plist */,
 				3F609E5A26832AB100CC0494 /* LadoTsivtsivadze_39.xcdatamodeld */,
 			);
 			path = LadoTsivtsivadze_39;
+			sourceTree = "<group>";
+		};
+		3F609E6926832EF800CC0494 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3F609E5126832AB100CC0494 /* AppDelegate.swift */,
+				3F609E5326832AB100CC0494 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3F609E6B26832EFE00CC0494 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3F609E6C26832F0500CC0494 /* Scenes */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3F609E6C26832F0500CC0494 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3F609E6D26832F0A00CC0494 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3F609E6D26832F0A00CC0494 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3F609E5526832AB100CC0494 /* ViewController.swift */,
+				3F609E5726832AB100CC0494 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3F609E6F26832F1A00CC0494 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F609E5D26832AB300CC0494 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3F609E712683302100CC0494 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3F609E722683303800CC0494 /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +193,7 @@
 			files = (
 				3F609E5626832AB100CC0494 /* ViewController.swift in Sources */,
 				3F609E5226832AB100CC0494 /* AppDelegate.swift in Sources */,
+				3F609E732683303800CC0494 /* NetworkManager.swift in Sources */,
 				3F609E5C26832AB100CC0494 /* LadoTsivtsivadze_39.xcdatamodeld in Sources */,
 				3F609E5426832AB100CC0494 /* SceneDelegate.swift in Sources */,
 			);
