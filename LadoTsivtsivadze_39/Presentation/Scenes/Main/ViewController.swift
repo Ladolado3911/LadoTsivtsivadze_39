@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         
         let semaphore = DispatchSemaphore(value: 0)
         
+/// აქ ვივარჯიშე
+        
 //        queue1.async {
 //            //guard let self = self else { return }
 //            print("sleeping in queue1...")
@@ -35,32 +37,32 @@ class ViewController: UIViewController {
 //            print("test is \(test)")
 //        }
         
+/// აქ გავტესტე დავალება 1 ის სისწორე
+        
         queue1.async {
-            //guard let self = self else { return }
-            print("1")
-            print("2")
+            //print("1")
+            //print("2")
             
             var result: [Int] = []
             
             for a in 0..<5 {
                 queue2.async {
-                    print("repeat")
+                    //print("repeat")
                     result.append(a)
                     semaphore.signal()
-                }
-                if a == 4 {
-                    print("signal, a = \(a)")
                 }
                 semaphore.wait()
             }
 
-            print("3")
-            print("4")
-            print("5")
+            //print("3")
+            //print("4")
+            //print("5")
             
-            print(result)
+            //print(result)
         }
     }
+    
+/// დავალება 2
     
     @IBAction func onPrint(_ sender: Any) {
         printNumbers()

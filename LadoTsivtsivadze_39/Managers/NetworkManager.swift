@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+/// დავალება 1
+
 struct Object {
     var id: Int
     var name: String
@@ -20,18 +22,16 @@ protocol NetworkManager: AnyObject {
 }
 
 extension NetworkManager {
-    func fetchObjects(completion: @escaping ([Object?]) -> Void) {
+    func fetchObjects(completion: @escaping ([Object]) -> Void) {
         let semaphore = DispatchSemaphore(value: 0)
         fetchIds { [weak self] (ids) in
             guard let self = self else { return }
-            var testObject: Object?
-            var result: [Object?] = []
+            var result: [Object] = []
             ids.forEach {
                 self.fetchObject(by: $0, completion: { (object) in
-                    testObject = object
+                    result.append(object)
                     semaphore.signal()
                 })
-                result.append(testObject)
                 semaphore.wait()
             }
             completion(result)
