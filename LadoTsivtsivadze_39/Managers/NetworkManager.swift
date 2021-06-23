@@ -26,18 +26,14 @@ extension NetworkManager {
             guard let self = self else { return }
             var testObject: Object?
             var result: [Object?] = []
-            var iteration = 0
             ids.forEach {
-                iteration += 1
                 self.fetchObject(by: $0, completion: { (object) in
                     testObject = object
+                    semaphore.signal()
                 })
                 result.append(testObject)
-                if iteration == ids.count {
-                    semaphore.signal()
-                }
+                semaphore.wait()
             }
-            semaphore.wait()
             completion(result)
         }
     }
